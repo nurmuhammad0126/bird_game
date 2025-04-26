@@ -7,7 +7,7 @@ part 'counter_state.dart';
 class CounterBloc extends Bloc<CounterEvent, CounterState> {
   CounterBloc() : super(CounterState(count: 0, textColor: Colors.black)) {
     on<DecrementEvent>((event, emit) {
-      int newCount = state.count - 8;
+      int newCount = state.count - 60;
       emit(
         state.copyWith(
           count: newCount,
@@ -17,7 +17,7 @@ class CounterBloc extends Bloc<CounterEvent, CounterState> {
     });
 
     on<IncrementEvent>((event, emit) {
-      int newCount = state.count + 2;
+      int newCount = state.count + 18;
       emit(
         state.copyWith(
           count: newCount,

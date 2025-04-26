@@ -6,7 +6,6 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:game_bird/bloc/counter_bloc.dart';
 import 'package:game_bird/model/pipe_model.dart';
 
-
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
 
@@ -41,7 +40,9 @@ class _HomeScreenState extends State<HomeScreen> {
 
       _pipeTimer = Timer.periodic(const Duration(seconds: 3), (timer) {
         setState(() {
-          _pipes.add(PipeModel(right: 0, gapTop: Random().nextDouble() * 300 + 100));
+          _pipes.add(
+            PipeModel(right: 0, gapTop: Random().nextDouble() * 300 + 100),
+          );
         });
       });
 
@@ -100,7 +101,7 @@ class _HomeScreenState extends State<HomeScreen> {
                           ),
                         ),
                         Positioned(
-                          top: pipe.gapTop + 120,
+                          top: pipe.gapTop + 140,
                           right: pipe.right,
                           child: Container(
                             width: 60,
@@ -125,7 +126,7 @@ class _HomeScreenState extends State<HomeScreen> {
                     ),
                     curve: Curves.easeInOut,
                     child: const CircleAvatar(
-                      radius: 10,
+                      radius: 17,
                       backgroundColor: Colors.amber,
                     ),
                   ),
