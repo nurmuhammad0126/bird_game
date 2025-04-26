@@ -4,13 +4,8 @@ import 'dart:math';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:game_bird/bloc/counter_bloc.dart';
+import 'package:game_bird/model/pipe_model.dart';
 
-class Pipe {
-  double right;
-  double gapTop;
-
-  Pipe({required this.right, required this.gapTop});
-}
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
@@ -24,7 +19,7 @@ class _HomeScreenState extends State<HomeScreen> {
   Timer? _pipeTimer;
   Timer? _pipeMoveTimer;
   bool isPlaying = false;
-  final List<Pipe> _pipes = [];
+  final List<PipeModel> _pipes = [];
 
   @override
   void dispose() {
@@ -46,7 +41,7 @@ class _HomeScreenState extends State<HomeScreen> {
 
       _pipeTimer = Timer.periodic(const Duration(seconds: 3), (timer) {
         setState(() {
-          _pipes.add(Pipe(right: 0, gapTop: Random().nextDouble() * 300 + 100));
+          _pipes.add(PipeModel(right: 0, gapTop: Random().nextDouble() * 300 + 100));
         });
       });
 
@@ -68,7 +63,6 @@ class _HomeScreenState extends State<HomeScreen> {
 
   @override
   Widget build(BuildContext context) {
-    print("WIDGET BUILD ISHLADI");
     return Scaffold(
       appBar: AppBar(
         leading: IconButton(
@@ -105,7 +99,6 @@ class _HomeScreenState extends State<HomeScreen> {
                             ),
                           ),
                         ),
-                        // Pastki ustun
                         Positioned(
                           top: pipe.gapTop + 120,
                           right: pipe.right,
