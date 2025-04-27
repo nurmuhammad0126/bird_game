@@ -1,15 +1,13 @@
 part of 'counter_bloc.dart';
 
 class CounterState {
-  int count;
-  Color textColor;
+  double count;
 
-  CounterState({required this.count, required this.textColor});
+  CounterState({required this.count});
 
-  CounterState copyWith({int? count, Color? textColor}) {
+  CounterState copyWith({double? count}) {
     return CounterState(
       count: count ?? this.count,
-      textColor: textColor ?? this.textColor,
     );
   }
 }

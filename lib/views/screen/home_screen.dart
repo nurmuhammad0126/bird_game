@@ -74,7 +74,9 @@ class _HomeScreenState extends State<HomeScreen> {
       body: GestureDetector(
         onTap: () {
           if (isPlaying) {
-            context.read<CounterBloc>().add(DecrementEvent());
+            Timer(const Duration(milliseconds: 130), () {
+              context.read<CounterBloc>().add(DecrementEvent());
+            });
           }
         },
         child: Container(
@@ -107,7 +109,7 @@ class _HomeScreenState extends State<HomeScreen> {
                             width: 60,
                             height:
                                 MediaQuery.of(context).size.height -
-                                (pipe.gapTop + 120),
+                                (pipe.gapTop + 180),
                             decoration: BoxDecoration(
                               color: Colors.green,
                               borderRadius: BorderRadius.circular(10),
@@ -116,14 +118,11 @@ class _HomeScreenState extends State<HomeScreen> {
                         ),
                       ],
                     );
-                  }).toList(),
+                  }),
 
                   AnimatedAlign(
                     duration: const Duration(milliseconds: 300),
-                    alignment: Alignment(
-                      -0.7,
-                      (state.count / 100).clamp(-1.0, 1.0),
-                    ),
+                    alignment: Alignment(-0.7, state.count),
                     curve: Curves.easeInOut,
                     child: const CircleAvatar(
                       radius: 17,
